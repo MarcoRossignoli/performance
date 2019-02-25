@@ -7,7 +7,7 @@ namespace System.Collections
     [BenchmarkCategory(Categories.CoreFX, Categories.Collections, Categories.GenericCollections)]
     public class DictionaryMappingFunction
     {
-        [Params(Utils.DefaultCollectionSize, Utils.DefaultCollectionSize * 2, Utils.DefaultCollectionSize * 3)]
+        [Params(500, 5_000, 50_000, 500_000, 5_000_000)]
         public int Items;
 
         [Benchmark]
