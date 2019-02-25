@@ -10,7 +10,7 @@ namespace System.Collections
 {
     internal static class Utils
     {
-        internal const int DefaultCollectionSize = 512;
+        internal const int DefaultCollectionSize = 512 * 4;
         
         internal const int ConcurrencyLevel = 4;
 
