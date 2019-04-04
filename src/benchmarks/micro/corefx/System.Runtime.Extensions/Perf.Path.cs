@@ -2,6 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Collections.Generic;
+
 using BenchmarkDotNet.Attributes;
 using MicroBenchmarks;
 
@@ -15,6 +17,13 @@ namespace System.IO.Tests
         private readonly string _testPath200 = PerfUtils.CreateString(200);
         private readonly string _testPath500 = PerfUtils.CreateString(500);
         private readonly string _testPath1000 = PerfUtils.CreateString(1000);
+
+        [ParamsSource(nameof(DirectorySeparatorValues))]
+        public string DirectorySeparator { get; set; }
+        public System.Collections.Generic.IEnumerable<string> DirectorySeparatorValues => new[]  
+        { 
+            "path/" , @"path", "", null 
+        };
 
         [Benchmark]
         public string Combine() => Path.Combine(_testPath, _testPath10);
@@ -59,5 +68,11 @@ namespace System.IO.Tests
 
         [Benchmark]
         public bool IsPathRooted() => Path.IsPathRooted(_testPath);
+
+        //[Benchmark]
+        //public string TrimEndingDirectorySeparator_String() => Path.TrimEndingDirectorySeparator(DirectorySeparator);
+
+        [Benchmark]
+        public bool EndsInDirectorySeparator_String() => Path.EndsInDirectorySeparator(DirectorySeparator);
     }
 }
