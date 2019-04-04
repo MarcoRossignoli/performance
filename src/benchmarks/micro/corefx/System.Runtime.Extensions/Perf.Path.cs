@@ -76,3 +76,7 @@ namespace System.IO.Tests
         public bool EndsInDirectorySeparator_String() => Path.EndsInDirectorySeparator(DirectorySeparator);
     }
 }
+
+/*
+  C:\Users\Marco\Downloads\Tmp\PerfTrim\PerfTrim\PerfTrim\dotnet-sdk-latest-win-x64\dotnet.exe run -c release -f netcoreapp3.0 -- --filter *Perf_Path*DirectorySeparator* --coreRun c:\git\corefx\artifacts\bin\testhost\netcoreapp-Windows_NT-Release-x64\shared\Microsoft.NETCore.App\9.9.9\CoreRun.exe 
+ */
